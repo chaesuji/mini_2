@@ -43,7 +43,13 @@ class Application
         $controllerName = UrlUtil::replaceSlashToBackSlash(_PATH_CONTROLLER.$identityName._BASE_FILENAME_CONTROLLER);
         // UrlUtil 클래스 안의 replaceSlashToBackSlash() 함수 호출 후 실행
         new $controllerName($identityName, $action);
-        // new 메서드 : 객체 생성? => $controllerName($identityName, $action) => controller 폴더 안의 Controller 클래스 실행
+        // new : 인스턴스화(인스턴스화 : 클래스를 호출해 사용)
+        // controllerName = application/controller/$identityName Controller
+        // ex) controllerName = application/controller/UserController
+        // ex) new $controllerName($identityName, $action) 
+        // => UserController($identityName, $action);
+        // => ('User', 'lofingGet') 
+        // > Controller의 생성자에 ($identityName, $action) 값을 넣어 실행 > UserController에서는 실행할 수 없어서 Controller의 생성자에서 실행
 
         // var_dump($controllerName); > 확인용 var_dump()
         // exit(); > 확인용 exit()

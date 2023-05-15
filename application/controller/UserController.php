@@ -5,13 +5,18 @@ namespace application\controller;
 class UserController extends Controller{
     // 로그인 페이지 접속
     public function loginGet() {
+        // get 방식으로 올 경우 login.php 실행
         return "login"._EXTENSION_PHP;
     }
 
     // 로그인
     public function loginPost() {
+        // post 방식(= 로그인 화면에서 버튼을 누를 때)으로 올 경우 로그인 확인
         $result = $this->model->getUser($_POST);
+        // getUser -> UserModel.php
+        // model을 통해 getUser()를 post로 실행한 값을 $result에 담음
         if(count($result) === 0){
+            // $result에 입력한 값이 없는 상태로 넘어온 경우
             $errMsg = "입력하신 회원 정보가 없습니다.";
             $this->addDynamicProperty("errMsg", $errMsg);
             return "login"._EXTENSION_PHP;
@@ -25,7 +30,9 @@ class UserController extends Controller{
 
     // logout 메소드
     public function logoutGet() {
+        // 저장한 해당 userID 삭제
         session_unset();
+        // 세션에 등록된 모든 데이터 삭제
         session_destroy();
         return "login"._EXTENSION_PHP;
     }

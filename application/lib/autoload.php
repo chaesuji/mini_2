@@ -8,7 +8,8 @@
 
 spl_autoload_register( function($path) {
     // $path = url 
-    $path = str_replace("\\", "/", $path); // path에서 넘어오는 값 중 \를 /로 바꿈
+    // path에서 넘어오는 값 중 \를 /로 바꿈
+    $path = str_replace("\\", "/", $path); 
 
     // 각 디렉토리 분류
     require_once($path._EXTENSION_PHP);

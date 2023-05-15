@@ -2,7 +2,7 @@
 namespace application\controller;
 use application\util\UrlUtil;
 use \AllowDynamicProperties;
-// AllowDynamicProperties; => 동적 속성을 허용
+// AllowDynamicProperties => 동적 속성을 허용
 
 #[AllowDynamicProperties]
 
@@ -33,6 +33,8 @@ class Controller {
 
         // 해당 controller의 메소드 호출
         $view = $this->$action(); 
+        // action() = loginGet(); 실행
+        // view = login.php
 
         if(empty($view)){
             echo "해당 Controller에 메소드가 없습니다 : ".$action;
@@ -50,11 +52,12 @@ class Controller {
         if(!in_array($identityName, self::$modelList)){
             // self::$modelList 안에 identityName이 없을 경우
             $modelName = UrlUtil::replaceSlashToBackSlash(_PATH_MODEL.$identityName._BASE_FILENAME_MODEL);
-            // replaceSlashToBackSlash() 함수를 통해 \를 /로 변환
-            self::$modelList[$identityName] = new $modelName(); // model class 호출
-            // new ?? 
+            self::$modelList[$identityName] = new $modelName();
+            // new $modelName(); => model class 호출
+            // application/model/$identityName Model 에 해당하는 클래스 실행
         }
         return self::$modelList[$identityName];
+        // model이 생성되어있다면 if를 실행하지 않고 $modelList의 [$identityName] 값을 리턴함
     }
 
     // 파라미터를 확인해서 해당하는 view를 리턴하거나, redirect
