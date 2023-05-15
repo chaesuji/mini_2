@@ -14,10 +14,12 @@ class Application
     public function __construct() {
         $arrPath = UrlUtil::getUrlArrPath(); // 접속 URL을 배열로 획득
         // UrlUtil::getUrlArrPath() => use를 통해 연결한 UrlUtil 클래스 안의 getUrlArrPath() 함수를 호출 후 실행
-        $identityName = empty($arrPath[0]) ? "User" : ucfirst($arrPath[0]);
+        $identityName = empty($arrPath[0]) ? "Trip" : ucfirst($arrPath[0]);
+        // $identityName = empty($arrPath[0]) ? "User" : ucfirst($arrPath[0]);
         // $arrPath에서 실행한 값(배열의 첫 번째)이 비어 있다면 "User"라는 값을 변수에 저장하고 값이 있다면
         // 그 값의 첫 글자를 대문자로 변환하여 저장함
-        $action = (empty($arrPath[1]) ? "login" : $arrPath[1]).ucfirst(strtolower($_SERVER["REQUEST_METHOD"]));
+        $action = (empty($arrPath[1]) ? "main" : $arrPath[1]).ucfirst(strtolower($_SERVER["REQUEST_METHOD"]));
+        // $action = (empty($arrPath[1]) ? "login" : $arrPath[1]).ucfirst(strtolower($_SERVER["REQUEST_METHOD"]));
         // $arrPath에서 실행한 값(배열의 두번째)이 비어 있다면 "login"라는 값을 변수에 저장하고 값이 있다면
         // $_SERVER["REQUEST_MEHTOD"] 메소드를 통해 GET/POST로 넘어오는 값을 전부 소문자로 변환한 후에 
         // 첫 글자를 대문자로 변환한 값을 저장함
