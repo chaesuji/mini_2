@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+h2{
+    font-family: 'NanumSquareNeo-Variable';
+    margin-top:10px;
+    margin-left: 50px;
+}
+.manglogo{
+    width:60px;
+    /* height:60px; */
+}
+.row, .container{
+    width:940px;
+
+}

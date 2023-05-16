@@ -2,20 +2,27 @@
 namespace application\model;
 
 class UserModel extends Model{
-    public function getUser( $arrUserInfo ){
+    // select user (login)
+    public function getUser( $arrUserInfo, $pwFlg = true ){
         $sql = " SELECT "
                 ." * "
                 ." FROM "
                 ." user_info "
                 ." WHERE "
-                ." u_id = :id "
-                ." AND "
-                ." u_pw = :pw ";
+                ." u_id = :id ";
+
+        if($pwFlg){
+            $sql .= " AND u_pw = :pw";
+        }
 
         $prepare = array(
             ":id" => $arrUserInfo["id"]
-            ,":pw" => $arrUserInfo["pw"]
         );
+
+        // pw를 추가할 경우
+        if($pwFlg){
+            $prepare[":pw"] = $arrUserInfo["pw"];
+        }
 
         try {
             $stmt = $this->conn->prepare($sql);
@@ -24,62 +31,40 @@ class UserModel extends Model{
         } catch (Exception $e) {
             echo "USER MODEL -> GET USER ERROR : ".$e->getMessage();
             exit();
-        } finally {
-            $this->closeConn();
         }
         return $result;
     }
 
-    public function checkId(){
-        $sql = " SELECT "
-        ." u_id "
-        ." FROM "
-        ." user_info ";
-
-        $prepare = array();
-
-        try {
-            $stmt = $this->conn->prepare($sql);
-            $stmt->execute($prepare);
-            $result = $stmt->fetchAll();
-        } catch (Exception $e) {
-            echo "USER -> checkid ERROR : ".$e->getMessage();
-            ecit();
-        } finally {
-            $this->closeConn();
-        }
-        return $result;
-    }
-
-    public function setUser( $arrUser ){
+    // insert user(signin)
+    public function setUser( $arrUserInfo ){
         $sql = " INSERT "
         ." INTO "
         ." user_info "
         ." ( "
         ." u_id "
         ." ,u_pw "
+        ." ,u_name "
         ." ) "
         ." VALUES "
         ." ( "
         ." :id "
         ." , :pw "
+        ." , :name "
         ." ) ";
 
         $prepare = array(
-            ":id" => $arrUser["id"]
-            ,":pw" => $arrUser["pw"]
+            ":id" => $arrUserInfo["id"]
+            ,":pw" => $arrUserInfo["pw"]
+            ,":name" => $arrUserInfo["name"]
         );
 
         try {
-            $this->conn->beginTransaction();
             $stmt = $this->conn->prepare($sql);
-            $stmt->execute($prepare);
-            $result = $stmt->fetchAll();
-            $this->conn->commit();
+            $result = $stmt->execute($prepare);
+            return $result;
         } catch (Exception $e) {
-            $this->closeConn();
+            return false;
         }
-        return $result;
     }
 }
 ?>

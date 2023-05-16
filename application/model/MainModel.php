@@ -1,7 +1,7 @@
 <?php
 namespace application\model;
 
-class ProductModel extends Model{
-    
+class MainModel extends Model{
+
 }
 ?>

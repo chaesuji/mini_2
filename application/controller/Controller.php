@@ -10,7 +10,7 @@ class Controller {
     protected $model;
     // protected : 상속 클래스 내에서만 접근 가능
     private static $modelList = [];
-    private static $arrNeedAuth = ["product/list"];
+    private static $arrNeedAuth = ["nav/theme", "nav/local", "nav/tour"];
     // private : 현재 클래스 내에서만 접근 가능
     // static : 정적 메소드 / 함수 안에서만 쓰이는 지역 범위의 변수이면서 값을 전역 범위 변수처럼 유지하는 변수
 
@@ -89,7 +89,8 @@ class Controller {
             // https://velog.io/@jazzyfact95/PHP-this-self-  :: this,self 정의,차이점
             if(!isset($_SESSION[_STR_LOGIN_ID]) && strpos($urlPath, $authPath) === 0){
                 // $_SESSION에 _STR_LOGIN_ID 값이 설정되어 있지 않고 $urlPath에 $authPath가 없다면
-                header(_BASE_REDIRECT."/trip/main");
+                echo "<script>alert('로그인이 필요한 페이지입니다.');</script>";
+                header(_BASE_REDIRECT."/user/login");
                 // header(_BASE_REDIRECT."/user/login");
                 // header("Location: /user/login"); 을 실행한 후에 그 뒤의 실행 종료
                 exit();

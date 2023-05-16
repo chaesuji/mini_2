@@ -10,21 +10,32 @@
     font-weight: normal;
     font-style: normal;
 }
-@media(min-width: 1010px){
+
+@media(min-width: 1001px){
+    /* .container{
+        width:1200px;
+        padding:0;
+    } */
     .carousel{
         position: relative;
         left:40vw;
         top:10vh;
+        /* left:300px;
+        top:90px; */
     }
     .good{
         position:absolute;
         top: 25vw;
         left:20vh;
+        /* top:290px;
+        left:50px; */
     }
     .logo{
         position:absolute;
         top:90px;
         left:32vw;
+        /* top:80px;
+        left:230px; */
         z-index: 1;
         width: 150px;
         height: 150px;
@@ -34,6 +45,9 @@
     .logo, .good{
         display: none;
     }
+    /* .container{
+        padding:0;
+    } */
 }
 .carousel_bg{
     background-color: rgb(217, 232, 238);

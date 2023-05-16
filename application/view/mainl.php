@@ -12,27 +12,27 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <!-- <a class="navbar-brand" href="#">Trip</a> -->
-        <a class="navbar-brand" href="#"><img src="/application/view/img/mang1.png" alt="mang" class="manglogo"></a>
+        <a class="navbar-brand" href="#" onclick="location.href = '/trip/mainl'"><img src="/application/view/img/mang1.png" alt="mang" class="manglogo"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="theme nav-link active" aria-current="page" href="#">테마</a>
+                    <a class="theme nav-link active" aria-current="page" href="#" onclick="location.href = '/nav/theme'">테마</a>
                 </li>
                 <li class="nav-item">
-                    <a class="local nav-link" href="#">지역</a>
+                    <a class="local nav-link" href="#" onclick="location.href = '/nav/local'">지역</a>
                 </li>
                 <li class="nav-item dropdown">
                 <a class="tour nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     여행
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#" onclick="location.href = '/nav/tour_k'">국내</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="location.href = '/nav/tour_g'">해외</a></li>
                     <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><hr class="dropdown-divider"></li>
                 </ul>
                 </li>
                 <li class="nav-item">
@@ -47,7 +47,7 @@
 <!-- 캐러셀 -->
 <div class="carousel_bg">
     <img src="/application/view/img/logo.gif" alt=".." class="logo">
-    <div id="carouselExampleCaptions" class="carousel slide" style="width:1000px;" data-bs-ride="carousel">
+    <div id="carouselExampleCaptions" class="carousel slide" style="width:100vw ;max-width:1000px;" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
