@@ -14,11 +14,11 @@
     </div>
     <form action="/user/signup" method="post">
         <label for="name">NAME</label>
-        <input type="text" name="name" id="name">
+        <input type="text" name="name" id="name" value="<?php echo (isset($this->inputData["name"]) ? $this->inputData["name"] : "" ) ?>">
         <span><?php echo (isset($this->arrError["name"]) ? $this->arrError["name"] : ""); ?></span>
         <br>
         <label for="id">ID</label>
-        <input type="text" name="id" id="id">
+        <input type="text" name="id" id="id" value="<?php echo (isset($this->inputData["id"]) ? $this->inputData["id"] : "" ) ?>">
         <button type="button" onclick="chkDuplicationId()" id="chkbtn">중복 체크</button>
         <span id="errMsgId"><?php echo (isset($this->arrError["id"]) ? $this->arrError["id"] : ""); ?></span>
         <br>

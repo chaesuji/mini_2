@@ -1,0 +1,39 @@
+1. url을 통해 페이지 접속 -> .htaccess > index.php
+
+.htaccess : 디렉토리에 대한 설정 옵션을 제공하는 파일
+- Options -MultiViews
+    localhost로 요청 시, index.php 또는 index.html를 자동으로 찾지 않음
+- RewriteEngine On
+    url을 재구성 하는 방식으로 직접 페이지를 탐색하는 것이 아니라 하나의 데이터로 받아드리는 설정
+- Options -Indexes
+    index.php가 없을 경우 디렉토리를 보여주지 않는 설정
+- RewriteCond
+    RewriteRule의 url재설정을 위한 필터 
+    %{REQUEST_FILENAME} !-d || !-f : 요청된 주소에 해당하는 디렉토리 || 파일이 있는지 확인
+- RewriteRule
+    RewriteCond가 true인 요청이면 설정한 요청으로 룰을 변경
+    / host와 subdirectory를 구분
+     ^(.+)$ index.php?url=$1 [QSA,L] => $1 = subdirectory 
+    host : localhost
+    subdirectory : trip/main 
+
+index.php : config(상수), autoload(각 디렉토리(=subdirectroy)를 분류) 파일 불러오고 application으로 연결하는 파일
+new application\lib\Application(); => application\lib\ 경로의 Application 클래스 안의 생성자(=__construnct()) 실행
+
+* new 메소드 : 인스턴스화 
+* 클래스(class) : 객체를 만들어 내기 위한 설계도 혹은 틀, 연관되어 있는 변수와 메서드의 집합
+* 객체 : 구현할 대상
+ - 변수와 객체
+  : 메모리에 저장된 자료(= **선언 후에 메모리를 할당해야만 사용할 수 있음**) -> 객체(object)
+  : 객체를 저장한 공간(= 데이터를 담을 공간) -> 변수(variable)
+* 인스턴스 : 객체를 실체화 / 클래스에 속하는 각 객체
+ - 메서드와 함수와 인스턴스
+  : 메서드와 함수 
+   = 특정 작업을 수행하는 코드 조각, 전역/지역에 상관없이 독립된 기능을 수행하는 단위 === 함수(function)
+   = 클래스, 구조체, 열거형에 포함되어있는 함수(= 클래스 함수) === 메서드(method)
+  
+  : 클래스 메서드(static method)와 인스턴스 메소드(instance) => 인스턴스 변수의 사용 유무로 나뉨
+   = 앞에 static을 붙여 선언된 메서드, 객체 생성 없이 호출이 가능 === 클래스 메서드(정적)
+   public static getId() { return id; }
+   = 앞에 static을 붙이지 않고 선언된 메서드 === 인스턴스 메서드(비정적)
+   public getPw() { return pw; }

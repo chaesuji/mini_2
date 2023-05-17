@@ -50,40 +50,63 @@ class UserController extends Controller{
         $arrPost = $_POST;
         $arrChkErr = [];
 
+
         // 유효성 체크
         // id 글자 수 체크
         if(mb_strlen($arrPost["id"]) === 0 || mb_strlen($arrPost["id"]) > 12){
             $arrChkErr["id"] = "ID는 12글자 이하로 입력해주세요.";
+            // $arrPost["id"] = "";
         }
         // id 영문, 숫자 체크
-        // if(preg_match('/[0-9]/',$arrPost["id"]) && preg_match('/[a-z]/i',$arrPost["id"])){
-        //     $arrChkErr["id"] = "ID는 숫자와 소문자 영어를 포함한 12글자 이하로 입력해주세요.";
-        // }
+        $pattern = "/[^a-zA-Z0-9]/";
+        if(preg_match($pattern, $arrPost["id"]) !== 0){
+            $arrChkErr["id"] = "ID는 숫자와 대/소문자 영어를 포함한 12글자 이하로 입력해주세요.";
+            // $arrPost["id"] = "";
+        }
 
         // pw 글자 수 체크
         if(mb_strlen($arrPost["pw"]) < 8 || mb_strlen($arrPost["pw"]) > 20){
             $arrChkErr["pw"] = "비밀번호는 8~20글자 사이로 입력해주세요.";
         }
 
-        $no_pattern = ["`",'~','#','$','%','^','&','*','|','\\',"\'",'\"',';',':','\/','?','=','+','_','(',')','<','>'];
         // pw 영문, 숫자, 특수문자 체크
-        if(strstr($arrPost["pw"], )){
-            $arrChkErr["pw"] = "비밀번호에 사용가능한 특수 문자는 \'!, @ \' 입니다.";
+        if(preg_match($pattern, $arrPost["pw"]) !== 0){
+            $arrChkErr["pw"] = "비밀번호는 숫자와 대/소문자 영어를 포함한 12글자 이하로 입력해주세요.";
         }
+
+        // phone 
+        // $phonepattern = "/^01[0-1]-([0-9]{3,4})-([0-9]{4})/";
 
         // 비밀번호 체크
         if($arrPost["pw"] !== $arrPost["pwchk"]){
             $arrChkErr["pwchk"] = "비밀번호와 비밀번호 확인 입력값이 일치하지 않습니다.";
+            // $arrPost["pw"] = "";
+            // $arrPost["pwchk"] = "";
         }
 
         // name 글자 수 체크
         if(mb_strlen($arrPost["name"]) ===0 || mb_strlen($arrPost["name"]) > 30){
             $arrChkErr["name"] = "이름은 30글자 이하로 입력해주세요.";
+            // $arrPost["name"] = "";
         }
+
+        // mariadb에서 대/소문자 유효성 검사
+        // CREATE TABLE user_info(
+        //     u_no INT PRIMARY KEY auto_increment
+        //     ,u_id VARCHAR(12) NOT NULL
+        //     ,u_pw VARCHAR(512) binary NOT null
+        //     ,u_name varchar(30) not null
+        //     ,d_flg char(1) not null default 0
+        // );
+        // INSERT INTO user_info(u_id, u_pw) VALUES('php506', '506');
+        // COMMIT;
+
+        // $result[0]["pw"] === $_POST["pw"]
 
         if(!empty($arrChkErr)){
             // 유효성 체크 에러가 있을 경우 에러 메세지 셋팅
             $this->addDynamicProperty('arrError', $arrChkErr);
+            $this->addDynamicProperty("inputData", $arrPost);
             return "signup"._EXTENSION_PHP;
         }
         
@@ -94,6 +117,7 @@ class UserController extends Controller{
             // $result에 입력한 값이 없는 상태로 넘어온 경우
             $errMsg = "입력하신 ID는 사용중입니다";
             $this->addDynamicProperty("errMsg", $errMsg);
+            $this->addDynamicProperty("inputData", $arrPost);
 
             // 회원가입 페이지 리턴
             return "signup"._EXTENSION_PHP;
@@ -115,5 +139,79 @@ class UserController extends Controller{
         // 로그인 페이지로 이동
         return _BASE_REDIRECT."/user/login";
     }
+
+    // 마이페이지 이동
+    public function mypageGet(){
+        return "mypage"._EXTENSION_PHP;
+    }
+
+    public function mypageinfo(){
+        $result = $this->model->getgetUser($_SESSION[_STR_LOGIN_ID]);
+        $this->model->close();
+
+        return $result[0];
+    }
+    
+    // 마이페이지 수정
+    public function mypagePost(){
+        $arrPost = $_POST;
+        $arrChkErr = [];
+
+        if(mb_strlen($arrPost["name"]) === 0 || mb_strlen($arrPost["name"]) > 30){
+            $arrChkErr["name"] = "이름은 30글자 이하로 입력해주세요.";
+        }
+        if(mb_strlen($arrPost["pw"]) < 8 || mb_strlen($arrPost["pw"]) > 20){
+            $arrChkErr["pw"] = "비밀번호는 8~20글자 사이로 입력해주세요.";
+        }
+        // pw 영문, 숫자, 특수문자 체크
+        // if(!preg_match('/[a-z0-9 ~!@$^&]/', $arrPost["pw"])){
+        //     $arrChkErr["pw"] = "";
+        // }else{
+        //     $arrChkErr["pw"] = "숫자와 소문자, 특수 문자(~, !, @, $, ^, &)를 포함하여 입력해주세요.";
+        // }
+        if($arrPost["pw"] !== $arrPost["pwchk"]){
+            $arrChkErr["pwchk"] = "비밀번호와 비밀번호 확인 입력값이 일치하지 않습니다.";
+        }
+        if(!empty($arrChkErr)){
+            // 유효성 체크 에러가 있을 경우 에러 메세지 셋팅
+            $this->addDynamicProperty('arrError', $arrChkErr);
+            return "mypage"._EXTENSION_PHP;
+        }
+
+        $result = $this->model->updateUser($arrPost);
+        // *** Transaction start
+        $this->model->beginTransaction();
+
+        // user insert
+        if(!$this->model->updateUser($arrPost)){
+            echo "User UPDATE ERROR";
+            $this->model->rollback();
+            exit();
+        }
+        // 정상처리 commit();
+        $this->model->commit();
+        // *** transaction end
+
+        return "mainl"._EXTENSION_PHP;
+    }
+
+    // 회원 탈퇴
+    // public function d_userGet() {
+    //     $result = $this->model->updateUser($_SESSION[_STR_LOGIN_ID]);
+    //     // *** Transaction start
+    //     $this->model->beginTransaction();
+
+    //     // user insert
+    //     if(!$this->model->deleteUser($_SESSION[_STR_LOGIN_ID])){
+    //         echo "User DELETE ERROR";
+    //         $this->model->rollback();
+    //         exit();
+    //     }
+    //     // 정상처리 commit();
+    //     $this->model->commit();
+    //     // *** transaction end
+
+    //     return "main"._EXTENSION_PHP;
+    // }
 }
 ?>

@@ -16,9 +16,9 @@
         <label for="pw">PASSWORD</label>
         <input type="password" name="pw" id="pw" required>
         <br>
+        <input type="hidden" id="hid" value="">
         <button type="submit">Login</button>
         <a class="signup" onclick="location.href = '/user/signup'">회원가입</a>
-        <span class="find_id_pw"><a>아이디</a>, <a>비밀번호</a>찾기</span>
     </form>
 </body>
 </html>
