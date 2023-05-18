@@ -1,0 +1,58 @@
+@font-face {
+    font-family: 'TAEBAEKmilkyway';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/TAEBAEKmilkyway.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+.local_container{
+    width: 1000px;
+}
+button{
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.qwe{
+    margin: 2em;
+}
+.local_container{
+    margin:0 auto;
+}
+.carousel-inner{
+    position: relative;
+}
+.car1, .car2, .car3{
+    font-family: 'TAEBAEKmilkyway';
+    position:absolute;
+    bottom:3em;
+    left:1.5em;
+    color:#fff;
+}
+.carp1, .carp2, .carp3{
+    font-family: 'TAEBAEKmilkyway';
+    position:absolute;
+    bottom:3.4em;
+    left:2.2em;
+    color:#fff;
+}
+.car1, .carp1{
+    background-color: rgba(190, 214, 155, 0.5);
+}
+.car2, .carp2{
+    background-color: rgba(214, 203, 155, 0.5);
+}
+.car3, .carp3{
+    background-color: rgba(165, 201, 233, 0.5);
+}
+.img1, .img2, .img3{
+    width:320px;
+    height:180px;
+}
+.div1, .div2, .div3{
+    margin:5px;
+    padding:0px;
+    width:320px;
+}
+.grid1{
+    display: flex;
+    flex-direction: row;
+}

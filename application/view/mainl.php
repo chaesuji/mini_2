@@ -9,40 +9,7 @@
     <title>Trip</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <!-- <a class="navbar-brand" href="#">Trip</a> -->
-        <a class="navbar-brand" href="#" onclick="location.href = '/trip/mainl'"><img src="/application/view/img/mang1.png" alt="mang" class="manglogo"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="theme nav-link active" aria-current="page" href="#" onclick="location.href = '/nav/theme'">테마</a>
-                </li>
-                <li class="nav-item">
-                    <a class="local nav-link" href="#" onclick="location.href = '/nav/local'">지역</a>
-                </li>
-                <li class="nav-item dropdown">
-                <a class="tour nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    여행
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#" onclick="location.href = '/nav/tour_k'">국내</a></li>
-                    <li><a class="dropdown-item" href="#" onclick="location.href = '/nav/tour_g'">해외</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" href="#">지도</a>
-                </li>
-            </ul>
-            <a class="logout nav-link" href="#" onclick="location.href = '/user/mypage'">마이페이지</a>
-            <a class="logout nav-link" href="#" onclick="location.href = '/user/logout'">로그아웃</a>
-        </div>
-    </div>
-</nav>
+<?php include_once("application/view/nav.php"); ?>
 
 <!-- 캐러셀 -->
 <div class="carousel_bg">
@@ -62,14 +29,14 @@
                 </div>
             </div>
             <div class="carousel-item" id="car_2" style="max-width:1000px; height:100%; background-color:azure;">
-                <img src="https://blog.allstay.com/wp-content/uploads/2019/02/3.png" class="d-block w-100" alt="...">
+                <img src="https://blog.allstay.com/wp-content/uploads/2019/02/4-1024x575.png" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-md-block">
                     <h5>Taj Mahal</h5>
                     <p>Some representative placeholder content for the second slide.</p>
                 </div>
             </div>
             <div class="carousel-item" id="car_3" style="max-width:1000px; height:100%; background-color:blue;">
-                <img src="https://blog.allstay.com/wp-content/uploads/2019/02/5.png" class="d-block w-100" alt="...">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/001_Chateau_de_Chillon_and_Dents_du_Midi_Photo_by_Giles_Laurent.jpg/1200px-001_Chateau_de_Chillon_and_Dents_du_Midi_Photo_by_Giles_Laurent.jpg" class="d-block w-100" style="height:528px;">
                 <div class="carousel-caption d-md-block">
                     <h5>Neuschwanstein Castle</h5>
                     <p>Some representative placeholder content for the third slide.</p>
@@ -101,6 +68,9 @@
         <a href="#qwer" class="detail">자세히 보기</a>
     </div>
 </div>
+<div>
+    
+</div>
 <div class="container" id="qwer">
     <hr>
     <div class="row row-xxl-4 row-cols-lg-3">
@@ -116,7 +86,7 @@
         </div>
         <div class="col d-flex justify-content-center mt-2 mb-1">
             <div class="card" style="width: 18rem;">
-                <img src="https://blog.allstay.com/wp-content/uploads/2019/02/4-1024x575.png" class="card-img-top" alt="...">
+                <img src="https://blog.allstay.com/wp-content/uploads/2019/02/3.png" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Taj Mahal</h5>
                     <p class="card-text">jjang</p>

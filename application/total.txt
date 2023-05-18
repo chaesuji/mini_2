@@ -37,3 +37,5 @@ new application\lib\Application(); => application\lib\ 경로의 Application 클
    public static getId() { return id; }
    = 앞에 static을 붙이지 않고 선언된 메서드 === 인스턴스 메서드(비정적)
    public getPw() { return pw; }
+
+2. Application.php > Application class의 생성자 실행

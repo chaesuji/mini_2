@@ -6,12 +6,15 @@ class NavController extends Controller {
         return "/theme/theme"._EXTENSION_PHP;
     }
     public function localGet(){
-        return "/theme/local"._EXTENSION_PHP;
+        return "local"._EXTENSION_PHP;
     }
     public function tour_kGet(){
-        return "/theme/tour_k"._EXTENSION_PHP;
+        return "tour_k"._EXTENSION_PHP;
     }
     public function tour_gGet(){
-        return "/theme/tour_g"._EXTENSION_PHP;
+        return "tour_g"._EXTENSION_PHP;
+    }
+    public function boardGet(){
+        return "board"._EXTENSION_PHP;
     }
 }

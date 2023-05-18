@@ -163,12 +163,11 @@ class UserController extends Controller{
         if(mb_strlen($arrPost["pw"]) < 8 || mb_strlen($arrPost["pw"]) > 20){
             $arrChkErr["pw"] = "비밀번호는 8~20글자 사이로 입력해주세요.";
         }
-        // pw 영문, 숫자, 특수문자 체크
-        // if(!preg_match('/[a-z0-9 ~!@$^&]/', $arrPost["pw"])){
-        //     $arrChkErr["pw"] = "";
-        // }else{
-        //     $arrChkErr["pw"] = "숫자와 소문자, 특수 문자(~, !, @, $, ^, &)를 포함하여 입력해주세요.";
-        // }
+        $pattern = "/[^a-zA-Z0-9]/";
+        if(preg_match($pattern, $arrPost["pw"]) !== 0){
+            $arrChkErr["pw"] = "PW는 숫자와 대/소문자 영어를 포함한 12글자 이하로 입력해주세요.";
+            // $arrPost["id"] = "";
+        }
         if($arrPost["pw"] !== $arrPost["pwchk"]){
             $arrChkErr["pwchk"] = "비밀번호와 비밀번호 확인 입력값이 일치하지 않습니다.";
         }
@@ -195,23 +194,28 @@ class UserController extends Controller{
         return "mainl"._EXTENSION_PHP;
     }
 
+    // 탈퇴 페이지로 이동
+    public function d_userGet(){
+        return "signout"._EXTENSION_PHP;
+    }
+
     // 회원 탈퇴
-    // public function d_userGet() {
-    //     $result = $this->model->updateUser($_SESSION[_STR_LOGIN_ID]);
-    //     // *** Transaction start
-    //     $this->model->beginTransaction();
+    public function d_userPOST() {
+        $result = $this->model->updateUser($_SESSION[_STR_LOGIN_ID], false);
+        // *** Transaction start
+        $this->model->beginTransaction();
 
-    //     // user insert
-    //     if(!$this->model->deleteUser($_SESSION[_STR_LOGIN_ID])){
-    //         echo "User DELETE ERROR";
-    //         $this->model->rollback();
-    //         exit();
-    //     }
-    //     // 정상처리 commit();
-    //     $this->model->commit();
-    //     // *** transaction end
+        // user insert
+        if(!$this->model->udpateUser($_SESSION[_STR_LOGIN_ID], false)){
+            echo "User DELETE ERROR";
+            $this->model->rollback();
+            exit();
+        }
+        // 정상처리 commit();
+        $this->model->commit();
+        // *** transaction end
 
-    //     return "main"._EXTENSION_PHP;
-    // }
+        return "main"._EXTENSION_PHP;
+    }
 }
 ?>

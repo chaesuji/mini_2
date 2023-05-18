@@ -4,16 +4,15 @@
     font-weight: normal;
     font-style: normal;
 }
+*{
+    margin-top: 0 auto;
+}
 h2{
     font-family: 'NanumSquareNeo-Variable';
-    margin-top:10px;
+    margin-top:50px;
     margin-left: 50px;
 }
-.manglogo{
-    width:60px;
-    /* height:60px; */
-}
-.row, .container{
+.row{
     width:940px;
-
+    /* text-align: center; */
 }

@@ -93,14 +93,19 @@ class UserModel extends Model{
         }
     }
 
-    // update user(mypage)
-    public function updateUser( $arrUserInfo ){
+    // update, delete user(mypage)
+    public function updateUser( $arrUserInfo, $flg = true ){
         $sql = " UPDATE "
             ." user_info "
             ." SET "
             ." u_name = :name "
-            ." , u_pw = :pw "
-            ." WHERE "
+            ." , u_pw = :pw ";
+
+        if($flg){
+            $sql .= ",d_flg = '1'";
+        }
+
+        $sql .= " WHERE "
             ." u_no = :no ";
 
         $prepare = array(
@@ -117,29 +122,5 @@ class UserModel extends Model{
             return false;
         }
     }
-
-    // delete user(mypage)
-    // public function deleteUser( $id ){
-    //     $sql = " UPDATE "
-    //         ." user_info "
-    //         ." SET "
-    //         ." d_flg = '1' "
-    //         ." WHERE "
-    //         ." u_id = :id ";
-
-    //     $prepare = array(
-    //         ":id" => $id
-    //     );
-    
-    //     try {
-    //         $stmt = $this->conn->prepare($sql);
-    //         $stmt->execute($prepare);
-    //         $result = $stmt->fetchAll();
-    //     } catch (Exception $e) {
-    //         echo "USER MODEL -> DELETE USER ERROR : ".$e->getMessage();
-    //         exit();
-    //     }
-    //     return $result;
-    // }
 }
 ?>

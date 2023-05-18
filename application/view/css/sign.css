@@ -1,3 +1,67 @@
-* {
-    margin:0 auto;
+@font-face {
+    font-family: 'Humanbumsuk';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-2@1.0/Humanbumsuk.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'TAEBAEKmilkyway';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/TAEBAEKmilkyway.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1 {
+    color:darksalmon;
+    font-family: 'NanumSquareNeo-Variable';
+    /* font-family: 'TAEBAEKmilkyway'; */
+    font-weight: 600;
+}
+label{
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: 600;
+}
+input{
+    font-family: 'TAEBAEKmilkyway';
+    outline: none;
+    border:none;
+    border-bottom: 0.5px solid black;
+}
+button{
+    background-color:darksalmon;
+    color:white;
+    border:none;
+    border-radius: 50px;
+    height:1.5em;
+}
+.loginid{
+    margin-left:5em;
+}
+.signup{
+    font-size: x-small;
+    border-bottom: 1px solid gray;
+    color:grey;
+}
+
+.myname{
+    margin-left:7em;
+}
+.myid{
+    margin-left:8.7em;
+}
+.mypw{
+    margin-left:4em;
+}
+.mypwchk{
+    margin-left:0.6em;
+}
+form{
+    margin-top:10em;
+    text-align: center;
 }

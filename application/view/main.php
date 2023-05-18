@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/application/view/css/main.css">
+    <style>
+        .manglogo{
+            width:60px;
+        }
+    </style>
     <title>Trip</title>
 </head>
 <body>
@@ -98,7 +103,72 @@
             3곳
         </strong>
         <br><br>
-        <a href="#" class="detail">자세히 보기</a>
+        <a href="#qwer" class="detail">자세히 보기</a>
+    </div>
+</div>
+<div class="container" id="qwer">
+    <hr>
+    <div class="row row-xxl-4 row-cols-lg-3">
+        <div class="col d-flex justify-content-center mt-2 mb-1">
+            <div class="card" style="width: 18rem; padding:0px;">
+                <img src="https://blog.allstay.com/wp-content/uploads/2019/02/11.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Mont-Saint-Michel</h5>
+                    <p class="card-text">jjang</p>
+                    <!-- <a href="#" class="btn btn-warning">Buy</a> -->
+                </div>
+            </div>
+        </div>
+        <div class="col d-flex justify-content-center mt-2 mb-1">
+            <div class="card" style="width: 18rem;">
+                <img src="https://blog.allstay.com/wp-content/uploads/2019/02/4-1024x575.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Taj Mahal</h5>
+                    <p class="card-text">jjang</p>
+                    <!-- <a href="#" class="btn btn-warning">Buy</a> -->
+                </div>
+            </div>
+        </div>
+        <div class="col d-flex justify-content-center mt-2 mb-1">
+            <div class="card" style="width: 18rem;">
+                <img src="https://blog.allstay.com/wp-content/uploads/2019/02/6-1.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Neuschwanstein Castle</h5>
+                    <p class="card-text">jjang</p>
+                    <!-- <a href="#" class="btn btn-warning">Buy</a> -->
+                </div>
+            </div>
+        </div>
+        <div class="col d-flex justify-content-center mt-2 mb-1">
+            <div class="card" style="width: 18rem;">
+                <img src="https://blog.allstay.com/wp-content/uploads/2019/02/1.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Colmar, France</h5>
+                    <p class="card-text">jjang</p>
+                    <!-- <a href="#" class="btn btn-warning">Buy</a> -->
+                </div>
+            </div>
+        </div>
+        <div class="col d-flex justify-content-center mt-2 mb-1">
+            <div class="card" style="width: 18rem;">
+                <img src="https://blog.allstay.com/wp-content/uploads/2019/02/8-1024x576.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Segovia Castle, Spain</h5>
+                    <p class="card-text">jjang</p>
+                    <!-- <a href="#" class="btn btn-warning">Buy</a> -->
+                </div>
+            </div>
+        </div>
+        <div class="col d-flex justify-content-center mt-3 mb-1">
+            <div class="card" style="width: 18rem;">
+                <img src="https://blog.allstay.com/wp-content/uploads/2019/02/14.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Lofoten, Norway</h5>
+                    <p class="card-text">jjang</p>
+                    <!-- <a href="#" class="btn btn-warning">Buy</a> -->
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <script src="/application/view/script/main.js"></script>
