@@ -50,9 +50,9 @@ class Controller {
     protected function getModel($identityName){
         // model 생성 체크
         if(!in_array($identityName, self::$modelList)){
-            // self::$modelList 안에 identityName이 없을 경우
             $modelName = UrlUtil::replaceSlashToBackSlash(_PATH_MODEL.$identityName._BASE_FILENAME_MODEL);
             self::$modelList[$identityName] = new $modelName();
+            // self::$modelList 안에 identityName이 없을 경우
             // new $modelName(); => model class 호출
             // application/model/$identityName Model 에 해당하는 클래스 실행
         }
@@ -65,7 +65,7 @@ class Controller {
         // view를 체크
         if(strpos($view, _BASE_REDIRECT) === 0){
         // strpos() : 특정 문자 검색
-        // $view에 "Location: "이 없을 경우
+        // $view에 "Location: "이 dlTdmf 경우
             header($view);
             // header()를 통해 $view 실행 후 그 후의 실행들을 종료
             exit();

@@ -27,7 +27,7 @@
 <body>
     <form action="/user/d_user" method="post">
         <img src="/application/view/img/nooo.png" class="noooo">
-        <span class="noout">대충 붙잡는 말<br>대충 붙잡는 말<br>대충 붙잡는 말<br>대충 붙잡는 말<br>대충 붙잡는 말<br>대충 붙잡는 말</span>
+        <span class="noout">정말 탈퇴하시겠습니까?</span>
         <div class="btndiv">
             <button type="submit">탈퇴</button>
             <button type="button" onclick="location.href='/user/mypage'">취소</button>

@@ -10,7 +10,7 @@ class UrlUtil {
 
     // url를 /로 구분해서 배열 형태로 리턴
     public static function getUrlArrPath(){
-        $path = UrlUtil::getUrl();
+        $path = self::getUrl();
         return $arrPath = $path !== "" ? explode("/", $path) : "";
     }
 

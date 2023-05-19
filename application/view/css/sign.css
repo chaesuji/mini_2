@@ -37,7 +37,10 @@ button{
     background-color:darksalmon;
     color:white;
     border:none;
-    border-radius: 50px;
+    /* border-radius: 50px; */
+    /* width:44px;
+    height:24px; */
+    font-size: 13px;
     height:1.5em;
 }
 .loginid{

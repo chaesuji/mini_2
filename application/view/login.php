@@ -19,7 +19,9 @@
         <label for="pw">PASSWORD</label>
         <input type="password" name="pw" id="pw" class="loginpw" placeholder="비밀번호를 입력하세요" required>
         <br><br>
+        <button type="button" onclick="location.href='/trip/main'">이전</button>
         <button type="submit">Login</button>
+        <br>
         <a class="signup" class="signup" onclick="location.href = '/user/signup'">회원가입</a>
     </form>
 </body>

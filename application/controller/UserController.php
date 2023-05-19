@@ -28,7 +28,8 @@ class UserController extends Controller{
 
         // 리스트 페이지 리턴
         // return _BASE_REDIRECT."/product/list";
-        return _BASE_REDIRECT."/trip/mainl";
+        return "mainl"._EXTENSION_PHP;
+        return _BASE_REDIRECT."/trip/mainl"; // redirect : 화면 전환이 필요할 때
     }
 
     // logout 메소드
@@ -70,10 +71,16 @@ class UserController extends Controller{
         }
 
         // pw 영문, 숫자, 특수문자 체크
-        if(preg_match($pattern, $arrPost["pw"]) !== 0){
-            $arrChkErr["pw"] = "비밀번호는 숫자와 대/소문자 영어를 포함한 12글자 이하로 입력해주세요.";
-        }
+        $patternPW = '/[^a-zA-Z0-9]/';
+        
 
+        $patternsp = '/[\~\!\@\^\*]{3}/';
+        if(preg_match($patternsp, $arrPost["pw"]) !== 0){
+            $arrChkErr["pw"] = "비밀번호의 특수문자(~,!,@,^,*)는 3글자 이하로 입력해주세요.";
+            if(preg_match($patternPW, $arrPost["pw"]) !== 0){
+                $arrChkErr["pw"] = "비밀번호는 숫자와 대/소문자 영어, 특수문자(~,!,@,^,*)를 포함한 12글자 이하로 입력해주세요.";
+            }
+        }
         // phone 
         // $phonepattern = "/^01[0-1]-([0-9]{3,4})-([0-9]{4})/";
 
@@ -121,6 +128,9 @@ class UserController extends Controller{
 
             // 회원가입 페이지 리턴
             return "signup"._EXTENSION_PHP;
+        }else{
+            $errMsg = "";
+            $this->addDynamicProperty("errMsg", $errMsg);
         }
 
         // *** Transaction start

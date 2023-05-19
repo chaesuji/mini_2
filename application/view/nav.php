@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/application/view/css/nav.css">
     <title>Document</title>
 </head>
@@ -23,19 +23,8 @@
                 <li class="nav-item">
                     <a class="local nav-link" href="#" onclick="location.href = '/nav/local'">지역</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="tour nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        여행
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li>
-                            <a class="dropdown-item" href="#" onclick="location.href = '/nav/tour_k'">국내</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#" onclick="location.href = '/nav/tour_g'">해외</a>
-                        </li>
-                        <li><hr class="dropdown-divider"></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="local nav-link" href="#" onclick="location.href = '/nav/tour'">여행</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" href="#" onclick="location.href = '/nav/board'">게시판</a>

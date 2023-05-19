@@ -99,8 +99,6 @@
             디즈니 영화 배경지로
             <br>
             등장한 실제 장소
-            <br>
-            3곳
         </strong>
         <br><br>
         <a href="#qwer" class="detail">자세히 보기</a>
