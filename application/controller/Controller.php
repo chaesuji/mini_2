@@ -89,7 +89,6 @@ class Controller {
             // https://velog.io/@jazzyfact95/PHP-this-self-  :: this,self 정의,차이점
             if(!isset($_SESSION[_STR_LOGIN_ID]) && strpos($urlPath, $authPath) === 0){
                 // $_SESSION에 _STR_LOGIN_ID 값이 설정되어 있지 않고 $urlPath에 $authPath가 없다면
-                echo "<script>alert('로그인이 필요한 페이지입니다.');</script>";
                 header(_BASE_REDIRECT."/user/login");
                 // header(_BASE_REDIRECT."/user/login");
                 // header("Location: /user/login"); 을 실행한 후에 그 뒤의 실행 종료
